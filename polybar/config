@@ -1,0 +1,108 @@
+; MY SHITTY CONFIG
+
+[colors]
+bg = #9A5485
+bg-alt = #F586B2
+fg = #452439
+fg-alt = #7f4158
+green = #20a030
+red = #a03020
+
+
+[bar/mybar]
+background = ${colors.bg}
+foreground = ${colors.fg}
+width = 100%
+height = 28
+module-margin-left = 2
+module-margin-right = 2
+padding-right = 2
+separator = /
+
+modules-left = i3
+modules-right = memory cpu filesystem pulseaudio battery date time
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = ${colors.fg}
+label-mode-background = ${colors.bg}
+
+label-focused = %index%
+label-focused-background = ${colors.bg-alt}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2
+
+[module/memory]
+type = internal/memory
+interval = 2
+format-prefix = "RAM"
+format-prefix-foreground = ${colors.fg-alt}
+label = %percentage_used%%
+format = <format-prefix> <label>
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = "CPU"
+format-prefix-foreground = ${colors.fg-alt}
+label = %percentage:2%%
+format = <format-prefix> <label>
+
+[module/filesystem]
+type = internal/fs
+interval = 25
+mount-0 = /
+label-mounted = %mountpoint% %percentage_used%%
+label-unmounted = %mountpoint% not mounted
+label-mounted-foreground = ${colors.fg}
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = <label-volume>
+label-volume = VOL %percentage%
+label-muted = muted
+label-volume-foreground = ${colors.fg}
+label-muted-foreground = ${colors.fg-alt}
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 100
+
+format-charging = Charging <label-charging>
+format-charging-foreground = ${colors.green}
+format-discharging = <label-discharging>
+format-discharging-foreground = ${colors.red}
+format-full = FULL
+format-full-foreground = ${colors.green}
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+
+[module/date]
+type = internal/date
+interval = 30
+
+date = %d.%m.%Y
+
+label = %date%
+format = <label>
+format-foreground = ${colors.fg}
+
+[module/time]
+type = internal/date
+interval = 1
+time = %H:%M
+time-alt = %H:%M:%S
+label = %time%
+format = <label>
+format-foreground = ${colors.fg}
