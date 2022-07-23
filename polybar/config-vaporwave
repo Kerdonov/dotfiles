@@ -1,15 +1,15 @@
 ; MY SHITTY CONFIG
 
 [colors]
-bg = #80434C5E
-bg-alt = #904C566A
-fg = #8FBCBB
-fg-alt = #D8DEE9
-green = #A3BE8C
-red = #BF616A
+bg = #9A5485
+bg-alt = #F586B2
+fg = #452439
+fg-alt = #7f4158
+green = #20a030
+red = #a03020
 
 
-[bar/nord]
+[bar/mybar]
 background = ${colors.bg}
 foreground = ${colors.fg}
 width = 100%

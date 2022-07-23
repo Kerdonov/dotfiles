@@ -2,4 +2,4 @@
 
 
 killall -q polybar
-polybar mybar -r
+polybar nord -r

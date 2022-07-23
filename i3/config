@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $wallpaper win95-vapor.png
+set $wallpaper city-wall-nord.png
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -163,11 +163,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# starts polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 client.focused          #2e3436 #2e3436 #ffffff #2e3436   #2e3436
-exec_always --no-startup-id feh --bg-fill $HOME/walls/$wallpaper
+exec_always --no-startup-id feh --bg-fill $HOME/pictures/walls/$wallpaper
 
 # changes keyboard layout
 exec_always --no-startup-id setxkbmap ee
@@ -180,16 +179,16 @@ gaps inner 12
 exec_always --no-startup-id compton &
 
 # lock screen (this doesn't work help)
-bindsym $mod+x exec slock
+bindsym --release $mod+x exec "slock"
 
 # pulseaudio shortcuts
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 sset Master 5%+
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 sset Master 5%-
-bindsym XF86AudioMute exec --no-startup-id amixer -c 0 sset Master toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-control --volume-max 100 up
+bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-control --volume-max 100 down
+bindsym XF86AudioMute exec --no-startup-id pulseaudio-control togmute
 
 # brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec backlight_control +10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec backlight_control -10 # decrease screen brightness
 
 #interactive screenshot by pressing printscreen
 bindsym Print exec gnome-screenshot -i 
